@@ -20,6 +20,21 @@ namespace ToysStore
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Database.SetInitializer(new ProductDatabaseInitializer());
+
+            RegisterCustomRoutes(RouteTable.Routes);
+        }
+        void RegisterCustomRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute(
+                "ProductsByCategoryRoute",
+                "Category/{categoryName}",
+                "~/ProductList.aspx"
+            );
+            routes.MapPageRoute(
+                "ProductByNameRoute",
+                "Product/{productName}",
+                "~/ProductDetails.aspx"
+            );
         }
     }
 }
